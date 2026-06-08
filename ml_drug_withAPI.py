@@ -1,7 +1,7 @@
 import numpy as np 
 import pandas as pd 
 import matplotlib.pyplot as plt
-from sklearn.tree import DecisionTreeRegressor, plot_tree
+from sklearn.tree import DecisionTreeClassifier, plot_tree
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import OrdinalEncoder
 from sklearn.compose import ColumnTransformer
@@ -47,7 +47,7 @@ preprocessor = ColumnTransformer(
 # Bundle preprocessing and model into a single pipeline
 pipeline = Pipeline(steps=[
     ('preprocessor', preprocessor),
-    ('regressor', DecisionTreeRegressor(max_depth=2, min_samples_leaf=20))
+    ('regressor', DecisionTreeClassifier(max_depth=2, min_samples_leaf=20))
 ])
 
 
@@ -77,11 +77,11 @@ plt.show()
 
 
 test_info = {
-    "Age": [19], 
-    "Sex": ["F"], 
+    "Age": [13], 
+    "Sex": ["M"], 
     "BP": ["NORMAL"], 
-    "Cholesterol": ["NORMAL"], 
-    "Na_to_K": [16.83]
+    "Cholesterol": ["HIGH"], 
+    "Na_to_K": [6.07]
 }
 new_info = pd.DataFrame(test_info)
 
